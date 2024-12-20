@@ -25,9 +25,9 @@ const Main = () => {
         >
           <div className="main">
             <h2>
-              WELCOME TO GEMAMETHYSTNG CONSULTANCY COMPANY THAT CREATES SOLUTION
+              WELCOME TO GEMAMETHYSTNG CONSULTANCY COMPANY THAT GUIDE STARTUPS TOWARD SUSTAINABLE GROWTH.
             </h2>
-            <p>we listen, we act because we believe you are worth it.</p>
+            <p>We listen, We act because we believe you are worth it.</p>
             <button>About Us</button>
           </div>
         </section>
