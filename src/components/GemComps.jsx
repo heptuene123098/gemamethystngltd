@@ -7,7 +7,7 @@ function GemComps() {
           <h1
           data-aos="fade-up"
            className="leading-[38px] font-bold phoneS:text-3xl tablet:text-5xl wide:text-7xl">
-            Welcome to <span></span>
+            <span className="text-black">Welcome to </span> 
             <span className="text-webpurple">Gem</span>
             <span className="text-black">Academy</span>
           </h1>
