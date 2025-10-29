@@ -77,7 +77,8 @@ function PricingPage() {
       <PricingServices />
       <Newslettersection />
       <Footer />
-    </main>
+
+        </main>
   );
 }
 export default PricingPage;

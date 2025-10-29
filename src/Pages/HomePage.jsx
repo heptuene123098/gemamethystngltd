@@ -32,7 +32,7 @@ function HomePage() {
         <Overlay />
         <Faq />
         <TeamComponents />
-        {/* <PorfolioComp /> */}
+        {/*<PortfolioComp />*/}
         <Testimonails />
         <Blog />
         <Footer />

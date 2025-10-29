@@ -1,16 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import html2canvas from "html2canvas";
-import imagesLoaded from "imagesloaded";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function PricingAbout() {
-  const captureRef = useRef(null);
-  const canvasWrapperRef = useRef(null);
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
-  // Define benefits and courses data
   const benefits = [
     {
       icon: "🎓",
