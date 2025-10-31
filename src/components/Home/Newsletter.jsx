@@ -21,7 +21,8 @@ function Newsletter() {
     setIsError(false);
 
     try {
-      const response = await fetch('http://localhost/gemamethyst/api/subscribers/subscribe.php', {
+      // POST to relative endpoint; Vite dev server proxies /api to the local API server
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -24,13 +24,20 @@ function ContactContent() {
     // Handle form submission
     setSubmitted(true);
 
-    const form = e.target;
-    const formDataObject = new FormData(form);
+    // Prepare data from state (formData already has Name, Email, Subject, Message)
+    const contactData = {
+      name: formData.Name,
+      email: formData.Email,
+      subject: formData.Subject,
+      message: formData.Message,
+    };
 
     try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formDataObject,
+        // Use relative path so Vite dev proxy forwards to the local API server
+        const response = await fetch('/api/contact', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify(contactData),
       });
 
       if (response.ok) {
@@ -67,12 +74,11 @@ function ContactContent() {
           </div>
         )}
 
-        <form
-          action="https://formsubmit.co/emmanuelohore2003@gmail.com"
-          method="POST"
-          className="flex flex-col h-full gap-6 phoneL:w-[100%]"
-          onSubmit={handleSubmit}
-        >
+           <form
+             // submission is handled in handleSubmit via fetch to /api/contact
+             className="flex flex-col h-full gap-6 phoneL:w-[100%]"
+             onSubmit={handleSubmit}
+           >
           {/* Prevent captcha */}
           <input type="hidden" name="_captcha" value="false" />
 
