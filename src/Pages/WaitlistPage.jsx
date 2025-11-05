@@ -67,7 +67,7 @@ function WaitlistPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl wide:text-5xl font-bold text-gray-900 mb-4">
-              Join <span className="text-webpurple">GemAcademy</span>'s Waitlist
+              Join <span className="text-webpurple">GemAcademy</span>&apos;s Waitlist
             </h1>
             <p className="text-xl wide:text-2xl text-gray-600 max-w-2xl mx-auto">
               Be among the first to experience our innovative learning platform and get exclusive early access benefits

@@ -13,7 +13,7 @@ function PricingPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const courses = [
+  /*const courses = [
     {
       id: 1,
       title: "Digital Transformation Fundamentals",
@@ -61,7 +61,7 @@ function PricingPage() {
       title: "Flexible Learning",
       description: "Study at your own pace with both online and in-person options available."
     }
-  ];
+  ];*/
 
   return (
     <main>
