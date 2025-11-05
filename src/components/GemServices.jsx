@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function GemServices() {
+  const navigate = useNavigate();
   return (
     <section className="bg-[#F4F5F9] min-h-screen flex items-center wide:px-0 px-8 phoneL:py-6 phoneP:py-4 relative overflow-hidden">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-start tablet:items-center justify-between gap-10 tablet:gap-8 phoneL:gap-6">
@@ -63,12 +66,16 @@ function GemServices() {
           {/* Centered Button */}
          <div className="relative overflow-hidden group w-fit">
             {/* Main button */}
-            <button className="btn btn_view w-full rounded-md px-[12px] uppercase tracking-[1px] py-[14px] bg-webpurple text-white border-none cursor-pointer text-[13px] font-bold laptop:text-[11px] laptop:px-[11px] laptop:py-[12px] tablet:px-[15px] tablet:py-[15px] phoneL:px-[10px] phoneL:py-[10px] phoneL:text-[9px]">
+            <button 
+            onClick={() => navigate("/waitlist")}
+            className="btn btn_view w-full rounded-md px-[12px] uppercase tracking-[1px] py-[14px] bg-webpurple text-white border-none cursor-pointer text-[13px] font-bold laptop:text-[11px] laptop:px-[11px] laptop:py-[12px] tablet:px-[15px] tablet:py-[15px] phoneL:px-[10px] phoneL:py-[10px] phoneL:text-[9px]">
               Join the Waitlist
             </button>
 
             {/* Slide-in on hover */}
-            <button className="btn btn_view absolute inset-0 w-full rounded-md px-[12px] uppercase tracking-[1px] py-[14px] bg-black text-white flex items-center justify-center -translate-x-full group-hover:translate-x-0 transition-transform duration-300 border-none cursor-pointer text-[13px] font-bold laptop:text-[11px] laptop:px-[11px] laptop:py-[12px] tablet:px-[10px] tablet:py-[11px] phoneL:px-[10px] phoneL:py-[10px] phoneL:text-[9px]">
+            <button 
+            onClick={() => navigate("/waitlist")}
+            className="btn btn_view absolute inset-0 w-full rounded-md px-[12px] uppercase tracking-[1px] py-[14px] bg-black text-white flex items-center justify-center -translate-x-full group-hover:translate-x-0 transition-transform duration-300 border-none cursor-pointer text-[13px] font-bold laptop:text-[11px] laptop:px-[11px] laptop:py-[12px] tablet:px-[10px] tablet:py-[11px] phoneL:px-[10px] phoneL:py-[10px] phoneL:text-[9px]">
               Join the Waitlist
             </button>
           </div>
