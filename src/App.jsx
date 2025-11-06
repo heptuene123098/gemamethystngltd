@@ -11,6 +11,7 @@ import ContactPage from "./Pages/ContactPage";
 import AllTeamMembers from "./Pages/AllTeamMembers";
 import GemAcademyPage from "./Pages/GemAcademyPage";
 import WaitlistPage from "./Pages/WaitlistPage";
+import JoinUs from "./Pages/JoinUs";
 import SpecificBlogPost from "./components/selectedBlog/SpecificBlogPost";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/GemAcademy" element={<GemAcademyPage />} />
         <Route path="/waitlist" element={<WaitlistPage />} />
+        <Route path="/join" element={<JoinUs />} />
         <Route path="/blog/:id" element={<SpecificBlogPost />} />
       </Routes>
     </>

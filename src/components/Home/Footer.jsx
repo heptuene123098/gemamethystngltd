@@ -17,12 +17,27 @@ function Footer() {
     { explore: "Blog", info: "Term & Conditions", company: "Careers", link: "/blog" },
   ];
 
-  const socialinks = [
-    "fa-linkedin-in",
-    "fa-tiktok",
-    "fa-facebook-f",
-    "fa-twitter",
-    "fa-instagram"
+  const socialLinks = [
+    { icon: "fa-linkedin-in", url: "https://linkedin.com/company/gemamethystngltd" },
+    { icon: "fa-tiktok", url: "https://tiktok.com/@_.gemamethystngltd._" },
+    { icon: "fa-facebook-f", url: "https://www.facebook.com/share/16Kybja8jp/?mibextid=wwXIfr" },
+    { icon: "fa-twitter", url: "https://x.com/gemamethystng" },
+    { icon: "fa-instagram", url: "https://instagram.com/_.gemamethystngltd._" }
+  ];
+
+  // Separate data for different sections to fix navigation issues
+  const companyData = [
+    { company: "About us", link: "/about" },
+    { company: "Blog", link: "/blog" },
+    { company: "Contact", link: "/contact" },
+    { company: "Careers", link: "/gemacademy" }
+  ];
+
+  const infoData = [
+    { info: "Join Us", link: "/join" },
+    { info: "Blog", link: "/blog" },
+    { info: "Privacy & Policy", link: "/privacy-policy" },
+    { info: "Term & Conditions", link: "/terms-conditions" }
   ];
 
   return (
@@ -36,16 +51,19 @@ function Footer() {
           <div className="flex flex-col gap-3">
             <p className="text-[#BCBCBE] text-[13px] leading-[23px] font-normal laptop:text-[11px] laptop:leading-[15px] tablet:text-[10px] tablet:leading-[12px]">
               Far far away, behind the word mountains, far from the countries,
-              steady on the internet—that’s where our heart lies.
+              steady on the internet—that's where our heart lies.
             </p>
             <div className="social_media flex gap-3 tablet:items-center">
-              {socialinks.map((item, index) => (
-                <i
+              {socialLinks.map((item, index) => (
+                <a
                   key={index}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
-                  className={`fa-brands ${item} text-white bg-webpurple p-3 rounded-full text-[14px] tablet:p-[.3rem] phoneL:text-[8px] phoneS:text-[text-12px] tablet:text-[8px] desktop:text-[8px] phoneP:p-[.5rem] phoneP:text-[9px]`}
-                ></i>
+                  className={`fa-brands ${item.icon} text-white bg-webpurple p-3 rounded-full text-[14px] tablet:p-[.3rem] phoneL:text-[8px] phoneS:text-[text-12px] tablet:text-[8px] desktop:text-[8px] phoneP:p-[.5rem] phoneP:text-[9px] hover:bg-purple-700 transition-colors`}
+                ></a>
               ))}
             </div>
           </div>
@@ -62,7 +80,11 @@ function Footer() {
               {exploreData.map((item, index) => (
                 <li key={index} className="group flex items-center text-[#BCBCBE] text-[12px] font-normal leading-[20px] laptop:text-[12px] laptop:leading-[15px] tablet:text-[10px] tablet:leading-[12px] phoneL:text-[10px] phoneL:leading-[12px] phoneP:text-[9px] phoneP:leading-[10px]">
                   <i className="fa-solid fa-angle-right pr-1 group-hover:text-webpurple transition-colors"></i>
-                  <Link to={item.link} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="block w-full">
+                  <Link 
+                    to={item.link} 
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
+                    className="block w-full hover:text-white transition-colors"
+                  >
                     <span data-hover={item.explore} className="block">
                       {item.explore}
                     </span>
@@ -74,14 +96,18 @@ function Footer() {
 
           {/* Info */}
           <div className="info flex flex-col gap-6 laptop:gap-3">
-             <h1 className="uppercase text-[15px] text-white leading-[24px] font-bold laptop:text-[14px] tablet:text-[12px] tablet:leading-[15px] phoneL:text-[13px] phoneL:leading-[15px] phoneP:text-[10px] phoneP:leading-[13px]">
+            <h1 className="uppercase text-[15px] text-white leading-[24px] font-bold laptop:text-[14px] tablet:text-[12px] tablet:leading-[15px] phoneL:text-[13px] phoneL:leading-[15px] phoneP:text-[10px] phoneP:leading-[13px]">
               Info
             </h1>
             <ul className="flex flex-col gap-2 cl-effect-5">
-              {exploreData.map((item, index) => (
+              {infoData.map((item, index) => (
                 <li key={index} className="group flex items-center text-[#BCBCBE] text-[12px] font-normal leading-[20px] laptop:text-[12px] laptop:leading-[15px] tablet:text-[10px] tablet:leading-[12px] phoneL:text-[10px] phoneL:leading-[12px] phoneP:text-[9px] phoneP:leading-[10px]">
                   <i className="fa-solid fa-angle-right pr-1 group-hover:text-webpurple transition-colors"></i>
-                  <Link to={item.link} className="block w-full">
+                  <Link 
+                    to={item.link} 
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="block w-full hover:text-white transition-colors"
+                  >
                     <span data-hover={item.info} className="block">
                       {item.info}
                     </span>
@@ -93,14 +119,18 @@ function Footer() {
 
           {/* Company */}
           <div className="company flex flex-col gap-6 laptop:gap-3">
-           <h1 className="uppercase text-[15px] text-white leading-[24px] font-bold laptop:text-[14px] tablet:text-[12px] tablet:leading-[15px] phoneL:text-[13px] phoneL:leading-[15px] phoneP:text-[10px] phoneP:leading-[13px]">
+            <h1 className="uppercase text-[15px] text-white leading-[24px] font-bold laptop:text-[14px] tablet:text-[12px] tablet:leading-[15px] phoneL:text-[13px] phoneL:leading-[15px] phoneP:text-[10px] phoneP:leading-[13px]">
               Company
             </h1>
             <ul className="flex flex-col gap-2 cl-effect-5">
-              {exploreData.map((item, index) => (
-               <li key={index} className="group flex items-center text-[#BCBCBE] text-[12px] font-normal leading-[20px] laptop:text-[12px] laptop:leading-[15px] tablet:text-[10px] tablet:leading-[12px] phoneL:text-[10px] phoneL:leading-[12px] phoneP:text-[9px] phoneP:leading-[10px]">
+              {companyData.map((item, index) => (
+                <li key={index} className="group flex items-center text-[#BCBCBE] text-[12px] font-normal leading-[20px] laptop:text-[12px] laptop:leading-[15px] tablet:text-[10px] tablet:leading-[12px] phoneL:text-[10px] phoneL:leading-[12px] phoneP:text-[9px] phoneP:leading-[10px]">
                   <i className="fa-solid fa-angle-right pr-1 group-hover:text-webpurple transition-colors"></i>
-                  <Link to={item.link} className="block w-full">
+                  <Link 
+                    to={item.link} 
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="block w-full hover:text-white transition-colors"
+                  >
                     <span data-hover={item.company} className="block">
                       {item.company}
                     </span>
@@ -112,14 +142,14 @@ function Footer() {
 
           {/* Have a Question? */}
           <div className="question flex flex-col gap-6 laptop:gap-3">
-             <h1 className="uppercase text-[15px] text-white leading-[24px] font-bold laptop:text-[14px] tablet:text-[12px] tablet:leading-[15px] phoneL:text-[13px] phoneL:leading-[15px] phoneP:text-[10px] phoneP:leading-[13px]">
+            <h1 className="uppercase text-[15px] text-white leading-[24px] font-bold laptop:text-[14px] tablet:text-[12px] tablet:leading-[15px] phoneL:text-[13px] phoneL:leading-[15px] phoneP:text-[10px] phoneP:leading-[13px]">
               Have a Question?
             </h1>
             <div className="flex flex-col gap-2 laptop:gap-1">
               <div className="question_map flex gap-2 items-center">
                 <i className="fa-solid fa-map text-webpurple tablet:text-[.9rem] phoneL:text-[.7rem] phoneP:text-[.6rem]"></i>
                 <p className="text-[#BCBCBE] text-nowrap laptop:text-[14px] tablet:text-[12px] phoneL:text-[10px] phoneP:text-[9px]">
-                  Omu-Aran, Kwara-State
+                  Lagos, Nigeria
                 </p>
               </div>
               <div className="question_phone flex items-center gap-2">
@@ -136,4 +166,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footer;  
