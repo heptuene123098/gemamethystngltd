@@ -8,6 +8,7 @@ import web from "../assets/icons/web-programming.png";
 import cer from "../assets/icons/certificate.png";
 import data from "../assets/icons/Data-Analysis.png";
 import Engineer from "../assets/icons/Engineer.png";
+import online from "../assets/icons/online-conference.png";
 
 //Combined Team data
 import teamMember1 from "../assets/images/team1.png";
@@ -302,39 +303,63 @@ export const services = [
   {
     text: " Gemamethyst Academy",
     serviceicon: cer,
+    path: "/pricing",
+    pricingAnchor: "pricing",
+  },
+  {
+    text: " FacelessCon",
+    serviceicon: online,
+    path: "https://faceless-client.vercel.app/",
+    pricingAnchor: "facelesscon",
   },
   {
     text: " Engineering Designs",
     serviceicon: Engineer,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
   {
     text: " Digital Products",
     serviceicon: horn,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
 
   {
     text: "Digital Marketing",
     serviceicon: stats,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
   {
     text: "Data Analysis",
     serviceicon: data,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
   {
     text: " Graphic Designs",
     serviceicon: vector,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
   {
     text: " Application Development",
     serviceicon: branding,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
   {
     text: " Web Development",
     serviceicon: web,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
   {
     text: " UX/UI Design",
     serviceicon: ux,
+    path: "/pricing",
+    pricingAnchor: "pricing",
   },
 ];
 

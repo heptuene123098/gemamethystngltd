@@ -21,6 +21,8 @@ const Solutions = () => {
                 key={index}
                 text={service.text}
                 icon={service.serviceicon}
+                path={service.path}
+                pricingAnchor={service.pricingAnchor} 
               />
             );
           })}

@@ -2,9 +2,13 @@ import PropTypes from 'prop-types';
 import { FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const SolutionBox = ({ text, icon }) => {
+const SolutionBox = ({ text, icon, path, pricingAnchor }) => {
   return (
-     <Link to="/pricing"> 
+     <Link  to={path} 
+      state={{ fromPricing: pricingAnchor }}
+      target="_blank"
+      rel="noopener noreferrer"
+      > 
      <div
       data-aos="fade-up-right"
       className="
@@ -85,6 +89,8 @@ const SolutionBox = ({ text, icon }) => {
 SolutionBox.propTypes = {
   text: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  pricingAnchor: PropTypes.string,
 };
 
 export default SolutionBox;
