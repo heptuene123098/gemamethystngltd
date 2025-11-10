@@ -1,15 +1,18 @@
 import Aos from "aos";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
-import { useNavigate } from "react-router-dom";
-import Subhero from "../components/headinghero";
+import { useNavigate, useLocation } from "react-router-dom";
+import { CareerPositions, partnershipTypes, GAbenefits } from "../constants";
 import NavBar from "../components/Home/NavBar";
+import ToTopBtn from "../components/toTopBtn";
+import HeroSlider from "../components/Home/joinsection";
 import Footer from "../components/Home/Footer";
 import ScrollToTop from "../components/ScrollToTop";
-import ToTopBtn from "../components/toTopBtn";
 
 function JoinUs() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("careers");
   const [formData, setFormData] = useState({
     name: "",
@@ -21,12 +24,30 @@ function JoinUs() {
   });
 
   useEffect(() => {
+    // Initialize AOS
     Aos.init({
       duration: 1000,
       offset: 100,
       once: true
     });
-  }, []);
+
+    // Handle navigation state for scrolling to careers
+    const urlParams = new URLSearchParams(window.location.search);
+    const navigateState = location.state;
+
+    if (navigateState?.scrollToCareers || urlParams.get('tab') === 'careers') {
+      setActiveTab('careers');
+      // Scroll to careers section after a brief delay
+      setTimeout(() => {
+        const careersElement = document.getElementById('careers');
+        if (careersElement) {
+          careersElement.scrollIntoView({ 
+            behavior: 'smooth' 
+          });
+        }
+      }, 500);
+    }
+  }, [location]);
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
@@ -43,100 +64,23 @@ function JoinUs() {
     // Reset form or show success message
   };
 
-    const CareerPositions = [
-        {
-      title: "Backend Developer",
-      type: "Full-time",
-      location: "Lagos, Nigeria",
-      description: "Build scalable backend systems and APIs to power our applications.",
-      requirements: ["Node.js", "Python", "MongoDB", "API Design"]
-    },
-    {
-      title: "Frontend Developer",
-      type: "Full-time",
-      location: "Lagos, Nigeria",
-      description: "We're looking for a skilled Frontend Developer to join our team and help build amazing user experiences.",
-      requirements: ["React", "JavaScript", "CSS", "TypeScript"]
-    },
-    {
-      title: "UI/UX Designer",
-      type: "Contract",
-      location: "Remote",
-      description: "Create beautiful and intuitive designs for our digital products and platforms.",
-      requirements: ["Figma", "User Research", "Prototyping", "Design Systems"]
-    },
-  ];
-
-  const partnershipTypes = [
-    {
-      title: "Technology Partnership",
-      icon: "fa-code",
-      description: "Collaborate with us on technology projects and innovative solutions."
-    },
-    {
-      title: "Business Partnership",
-      icon: "fa-handshake",
-      description: "Join forces to create new business opportunities and expand market reach."
-    },
-    {
-      title: "Community Partnership",
-      icon: "fa-users",
-      description: "Work together on community initiatives and social impact projects."
+  const scrollToApplicationForm = () => {
+    const formElement = document.getElementById('application-form');
+    if (formElement) {
+      formElement.scrollIntoView({ 
+        behavior: 'smooth' 
+      });
     }
-  ];
-
-  const benefits = [
-    {
-      icon: "fa-gem",
-      title: "Growth Opportunities",
-      description: "Continuous learning and professional development programs"
-    },
-    {
-      icon: "fa-heart",
-      title: "Health & Wellness",
-      description: "Comprehensive health insurance and wellness programs"
-    },
-    {
-      icon: "fa-bolt",
-      title: "Flexible Work",
-      description: "Remote work options and flexible working hours"
-    },
-    {
-      icon: "fa-trophy",
-      title: "Competitive Pay",
-      description: "Attractive compensation packages and bonuses"
-    }
-  ];
-
+  };
+  
   return (
     <main className="relative">
       <NavBar />
       <ToTopBtn />
       <ScrollToTop />
-      <Subhero page={"Join Us"} />
-      <CareerPositions /> 
-      
+      <HeroSlider />
       
       <div className="min-h-screen bg-gray-50 pt-20">
-        {/* Hero Section */}
-        <section className="bg-[#232429] text-white py-20">
-          <div className="container mx-auto px-6 tablet:px-10 text-center">
-            <h1 
-              className="text-4xl laptop:text-3xl tablet:text-2xl phoneL:text-xl font-bold mb-6"
-              data-aos="fade-up"
-            >
-              Join Our Journey
-            </h1>
-            <p 
-              className="text-xl laptop:text-lg tablet:text-base phoneL:text-sm text-gray-300 max-w-2xl mx-auto"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              Be part of something extraordinary. Help us shape the future of technology and innovation.
-            </p>
-          </div>
-        </section>
-
         {/* Tabs Navigation */}
         <div className="bg-white shadow-sm sticky top-20 z-10">
           <div className="container mx-auto px-6 tablet:px-10">
@@ -160,7 +104,7 @@ function JoinUs() {
 
         {/* Careers Tab */}
         {activeTab === "careers" && (
-          <div className="container mx-auto px-6 tablet:px-10 py-16">
+          <div id="careers" className="container mx-auto px-6 tablet:px-10 py-16">
             {/* Benefits Section */}
             <section className="mb-16">
               <h2 
@@ -170,7 +114,7 @@ function JoinUs() {
                 Why Join Our Team?
               </h2>
               <div className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-8">
-                {benefits.map((benefit, index) => (
+                {GAbenefits.map((benefit, index) => (
                   <div
                     key={index}
                     className="bg-white p-6 rounded-lg shadow-md text-center"
@@ -194,7 +138,7 @@ function JoinUs() {
                 Open Positions
               </h2>
               <div className="space-y-6">
-                {careerPositions.map((position, index) => (
+                {CareerPositions.map((position, index) => (
                   <div
                     key={index}
                     className="bg-white p-6 rounded-lg shadow-md border-l-4 border-webpurple"
@@ -215,7 +159,10 @@ function JoinUs() {
                           </span>
                         </div>
                       </div>
-                      <button className="bg-webpurple text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                      <button 
+                        onClick={scrollToApplicationForm}
+                        className="bg-webpurple text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors"
+                      >
                         Apply Now
                       </button>
                     </div>
@@ -236,7 +183,7 @@ function JoinUs() {
             </section>
 
             {/* Application Form */}
-            <section className="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+            <section id="application-form" className="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
               <h2 
                 className="text-2xl font-bold mb-6 text-gray-800 text-center"
                 data-aos="fade-up"
@@ -301,7 +248,7 @@ function JoinUs() {
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-webpurple focus:border-transparent"
                     >
                       <option value="">Select a position</option>
-                      {careerPositions.map((pos, index) => (
+                      {CareerPositions.map((pos, index) => (
                         <option key={index} value={pos.title}>{pos.title}</option>
                       ))}
                     </select>

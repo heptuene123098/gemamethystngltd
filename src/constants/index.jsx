@@ -972,3 +972,70 @@ export const BENEFITS = [
     description: "Study at your own pace with both online and in-person options available."
   }
 ];
+
+//Careerpositions
+export const CareerPositions = [
+        {
+      title: "Backend Developer",
+      type: "Full-time",
+      location: "Lagos, Nigeria",
+      description: "Build scalable backend systems and APIs to power our applications.",
+      requirements: ["Node.js", "Python", "MongoDB", "API Design"]
+    },
+    {
+      title: "Frontend Developer",
+      type: "Full-time",
+      location: "Lagos, Nigeria",
+      description: "We're looking for a skilled Frontend Developer to join our team and help build amazing user experiences.",
+      requirements: ["React", "JavaScript", "CSS", "TypeScript"]
+    },
+    {
+      title: "UI/UX Designer",
+      type: "Contract",
+      location: "Remote",
+      description: "Create beautiful and intuitive designs for our digital products and platforms.",
+      requirements: ["Figma", "User Research", "Prototyping", "Design Systems"]
+    },
+  ];
+
+export const partnershipTypes = [
+    {
+      title: "Technology Partnership",
+      icon: "fa-code",
+      description: "Collaborate with us on technology projects and innovative solutions."
+    },
+    {
+      title: "Business Partnership",
+      icon: "fa-handshake",
+      description: "Join forces to create new business opportunities and expand market reach."
+    },
+    {
+      title: "Community Partnership",
+      icon: "fa-users",
+      description: "Work together on community initiatives and social impact projects."
+    }
+  ];
+
+export  const GAbenefits = [
+    {
+      icon: "fa-gem",
+      title: "Growth Opportunities",
+      description: "Continuous learning and professional development programs"
+    },
+    {
+      icon: "fa-heart",
+      title: "Health & Wellness",
+      description: "Comprehensive health insurance and wellness programs"
+    },
+    {
+      icon: "fa-bolt",
+      title: "Flexible Work",
+      description: "Remote work options and flexible working hours"
+    },
+    {
+      icon: "fa-trophy",
+      title: "Competitive Pay",
+      description: "Attractive compensation packages and bonuses"
+    }
+  ];
+
