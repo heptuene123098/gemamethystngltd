@@ -1,7 +1,7 @@
 import Prices from "./Prices";
-import img2 from "../assets/brandassets/FACELESSCON.svg";
+import img2 from "../assets/brandassets/FACELESSCON1.svg";
 import img1 from "../assets/images/ximage_3.jpg.pagespeed.ic.CzImA-z_Ch.jpg";
-import img3 from "../assets/brandassets/GEMACADEMY 1.svg";
+import img3 from "../assets/brandassets/GEMACADEMY.svg";
 
  function PricingComps() {
    return (

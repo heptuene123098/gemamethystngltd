@@ -21,10 +21,8 @@ function ContactContent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Handle form submission
     setSubmitted(true);
 
-    // Prepare data from state (formData already has Name, Email, Subject, Message)
     const contactData = {
       name: formData.Name,
       email: formData.Email,
@@ -33,15 +31,13 @@ function ContactContent() {
     };
 
     try {
-        // Use relative path so Vite dev proxy forwards to the local API server
-        const response = await fetch('/api/contact', {
-           method: 'POST',
-           headers: { 'Content-Type': 'application/json' },
-           body: JSON.stringify(contactData),
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contactData),
       });
 
       if (response.ok) {
-        // Clear the form fields after successful submission
         setFormData({
           Name: "",
           Email: "",
@@ -53,40 +49,40 @@ function ContactContent() {
         }, 1500);
       } else {
         console.log("Error submitting form");
-        setSubmitted(false); // Hide success message if there's an error
+        setSubmitted(false);
       }
     } catch (error) {
       console.log("Error:", error);
-      setSubmitted(false); // Hide success message if there's an error
+      setSubmitted(false);
     }
   };
 
   return (
-    <section className="contact-content flex overflow-hidden shadow-lg rounded-md tablet:flex-col phoneP:gap-7">
-      <div className="get0n_TOUCH flex flex-col w-[50%] p-[3rem] gap-4 laptop:w-[60%] tablet:w-full phoneL:p-4 phoneP:p-1">
-        <h1 className="font-bold text-[28px] leading-[42px] uppercase laptop:text-[20px] phoneL:text-[18px] phoneL:leading-[20px] phoneP:text-[16px] phoneP:leading-[18px]">
+    <section className="contact-content flex overflow-hidden shadow-lg rounded-md tablet:flex-col phoneP:gap-7 bg-white">
+      {/* Contact Form Section */}
+      <div className="get-in-touch flex flex-col w-[50%] p-8 gap-6 laptop:w-[60%] tablet:w-full tablet:p-6 phoneL:p-4 phoneP:p-3">
+        <h1 className="font-bold text-2xl leading-9 uppercase laptop:text-xl phoneL:text-lg phoneP:text-base phoneP:leading-6">
           Get in Touch
         </h1>
 
         {submitted && (
-          <div className="bg-green-100 text-green-700 border border-green-400 px-4 py-2 rounded text-sm">
-            ✅ Your message has been sent!
+          <div className="bg-green-100 text-green-700 border border-green-400 px-4 py-3 rounded text-sm mb-4">
+            ✅ Your message has been sent successfully!
           </div>
         )}
 
-           <form
-             // submission is handled in handleSubmit via fetch to /api/contact
-             className="flex flex-col h-full gap-6 phoneL:w-[100%]"
-             onSubmit={handleSubmit}
-           >
-          {/* Prevent captcha */}
+        <form
+          className="flex flex-col h-full gap-6 phoneL:gap-4"
+          onSubmit={handleSubmit}
+        >
           <input type="hidden" name="_captcha" value="false" />
 
-          <div className="name_heaeder flex justify-between">
+          {/* Name and Email - Stack on mobile */}
+          <div className="name-email flex justify-between gap-4 phoneP:flex-col phoneP:gap-4">
             <input
               type="text"
-              className="border-[2px] border-webpurple p-2 w-[45%] phoneL:placeholder:text-[.8rem] phoneL:h-[2.5rem] phoneP:h-8 phoneP:w-[48%]"
-              placeholder="Name"
+              className="border-2 border-webpurple p-3 w-[48%] rounded-sm focus:outline-none focus:ring-2 focus:ring-webpurple/30 transition-all phoneL:placeholder:text-sm phoneL:h-12 phoneP:w-full phoneP:h-10 phoneP:p-2"
+              placeholder="Your Name"
               required
               name="Name"
               value={formData.Name}
@@ -94,60 +90,65 @@ function ContactContent() {
             />
             <input
               type="email"
-              className="border-[2px] border-webpurple p-2 w-[45%] phoneL:placeholder:text-[.8rem] phoneL:h-[2.5rem] phoneP:h-8 phoneP:w-[48%]"
-              placeholder="Email"
+              className="border-2 border-webpurple p-3 w-[48%] rounded-sm focus:outline-none focus:ring-2 focus:ring-webpurple/30 transition-all phoneL:placeholder:text-sm phoneL:h-12 phoneP:w-full phoneP:h-10 phoneP:p-2"
+              placeholder="Your Email"
               required
               name="Email"
               value={formData.Email}
               onChange={handleInputChange}
             />
           </div>
+          
           <input
             type="text"
             placeholder="Subject"
-            className="border-[2px] border-webpurple p-2 w-[100%] phoneL:placeholder:text-[.8rem] phoneL:h-[2.5rem] phoneP:h-8"
+            className="border-2 border-webpurple p-3 w-full rounded-sm focus:outline-none focus:ring-2 focus:ring-webpurple/30 transition-all phoneL:placeholder:text-sm phoneL:h-12 phoneP:h-10 phoneP:p-2"
             required
             name="Subject"
             value={formData.Subject}
             onChange={handleInputChange}
           />
+          
           <textarea
-            placeholder="Message"
+            placeholder="Your Message"
             required
             name="Message"
-            className="border-[2px] border-webpurple p-2 w-full h-[9rem] phoneL:placeholder:text-[.8rem] resize-none phoneL:h-[7rem] phoneP:h-[6rem]"
+            className="border-2 border-webpurple p-3 w-full h-36 rounded-sm focus:outline-none focus:ring-2 focus:ring-webpurple/30 transition-all resize-none phoneL:placeholder:text-sm phoneL:h-28 phoneP:h-24 phoneP:p-2"
             value={formData.Message}
             onChange={handleInputChange}
           ></textarea>
+          
           <button
             type="submit"
-            className="p-2 w-fit bg-webpurple text-white phoneL:text-[.8rem] phoneL:p-2.5 rounded-sm"
+            className="p-3 w-fit bg-webpurple text-white font-medium rounded-sm hover:bg-webpurple/90 transition-colors phoneL:text-sm phoneL:px-4 phoneL:py-3 phoneP:w-full phoneP:text-base"
           >
             Send Message
           </button>
         </form>
       </div>
 
-      <div className="contact-info flex flex-col items-center w-[50%] p-[3rem] gap-8 bg-[#232429] laptop:w-[45%] tablet:w-full phoneP:gap-5">
-        <h1 className="font-bold text-[28px] leading-[42px] uppercase text-white laptop:text-[20px] phoneL:text-[18px] phoneL:leading-[20px] phoneP:text-[16px] phoneP:leading-[18px] ">
-          Contact us
+      {/* Contact Info Section */}
+      <div className="contact-info flex flex-col items-center w-[50%] p-8 gap-8 bg-[#232429] text-white laptop:w-[40%] tablet:w-full tablet:p-6 phoneL:p-4 phoneP:p-3 phoneP:gap-6">
+        <h1 className="font-bold text-2xl leading-9 uppercase laptop:text-xl phoneL:text-lg phoneP:text-base phoneP:leading-6 text-center">
+          Contact Information
         </h1>
-        <div className="contact-info-box flex flex-col gap-8 laptop:gap-5 phoneP:gap-3">
+        
+        <div className="contact-info-box flex flex-col gap-6 w-full laptop:gap-5 phoneP:gap-4">
           {contacData.map((item, index) => (
             <div
               key={index}
-              className="contact-info-box-item flex gap-4 items-center phoneL:gap-2"
+              className="contact-info-item flex gap-4 items-start phoneL:gap-3 phoneP:gap-2"
             >
-              <div className="contact-info-box-icon">
+              <div className="contact-icon flex-shrink-0">
                 <i
-                  className={`${item.icon} text-[20px] p-3 rounded-full text-white bg-[#393A3F] laptop:text-[16px] phoneP:text-[13px] phoneP:p-2.5`}
+                  className={`${item.icon} text-lg p-3 rounded-full text-white bg-[#393A3F] laptop:text-base phoneL:text-sm phoneL:p-2.5 phoneP:p-2 phoneP:text-xs`}
                 ></i>
               </div>
-              <div className="contact-info-box-text flex gap-2">
-                <h1 className="text-[16px] leading-[29px] text-webpurple font-bold capitalize laptop:text-[14px] phoneP:text-[13px]">
-                  {item.title} :
-                </h1>
-                <p className="text-[16px] font-normal leading-[29px] text-white laptop:text-[14px] phoneP:text-[13px] ">
+              <div className="contact-text flex flex-col gap-1 min-w-0">
+                <h2 className="text-base leading-6 text-webpurple font-bold capitalize laptop:text-sm phoneP:text-xs">
+                  {item.title}
+                </h2>
+                <p className="text-base font-normal leading-6 text-white break-words laptop:text-sm phoneP:text-xs">
                   {item.description}
                 </p>
               </div>
